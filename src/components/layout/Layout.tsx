@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar.tsx';
+import Sidebar from './Sidebar';
 import { Menu } from 'lucide-react';
 
 const Layout: React.FC = () => {

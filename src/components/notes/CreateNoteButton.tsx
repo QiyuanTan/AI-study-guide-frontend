@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FilePlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useNotes } from '../../context/NotesContext.tsx';
+import { useNotes } from '../../context/NotesContext';
 
 interface CreateNoteButtonProps {
   courseId: string;
@@ -49,13 +49,13 @@ const CreateNoteButton: React.FC<CreateNoteButtonProps> = ({ courseId }) => {
   return (
     <div className="flex flex-col p-4 bg-white rounded-lg shadow-md border border-gray-200">
       <h3 className="text-lg font-medium mb-3">Create New Note</h3>
-      
+
       {error && (
         <div className="mb-3 p-2 bg-red-50 text-red-700 text-sm rounded">
           {error}
         </div>
       )}
-      
+
       <div className="mb-3">
         <label htmlFor="note-title" className="block text-sm font-medium text-gray-700 mb-1">
           Note Title
@@ -69,7 +69,7 @@ const CreateNoteButton: React.FC<CreateNoteButtonProps> = ({ courseId }) => {
           placeholder="Enter note title"
         />
       </div>
-      
+
       <div className="flex justify-end gap-2">
         <button
           onClick={() => setIsCreating(false)}

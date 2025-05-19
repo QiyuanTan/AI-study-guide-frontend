@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import { useCourses } from '../../context/CourseContext.tsx';
+import { useCourses } from '../../context/CourseContext';
 
 interface CreateCourseModalProps {
   isOpen: boolean;

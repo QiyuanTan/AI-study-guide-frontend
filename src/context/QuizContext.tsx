@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import { generateQuiz, submitQuiz } from '../services/api.ts';
-import { Question, QuizResult } from '../types/quiz.ts';
+import { generateQuiz, submitQuiz } from '../services/api';
+import { Question, QuizResult } from '../types/quiz';
 
 interface QuizContextType {
   questions: Question[];

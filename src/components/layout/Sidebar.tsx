@@ -10,11 +10,11 @@ import {
   User, 
   X 
 } from 'lucide-react';
-import { useCourses } from '../../context/CourseContext.tsx';
-import { useNotes } from '../../context/NotesContext.tsx';
-import { Course } from '../../types/course.ts';
-import { Note } from '../../types/note.ts';
-import CreateCourseModal from '../courses/CreateCourseModal.tsx';
+import { useCourses } from '../../context/CourseContext';
+import { useNotes } from '../../context/NotesContext';
+import { Course } from '../../types/course';
+import { Note } from '../../types/note';
+import CreateCourseModal from '../courses/CreateCourseModal';
 
 interface SidebarProps {
   onClose: () => void;

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint ../../../Downloads/project-bolt-sb1-szra2hvd/project",
+    "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {

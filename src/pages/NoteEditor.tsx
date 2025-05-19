@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Save, ArrowLeft, Trash2 } from 'lucide-react';
-import { useNotes } from '../context/NotesContext.tsx';
-import { useCourses } from '../context/CourseContext.tsx';
-import PageHeader from '../components/common/PageHeader.tsx';
+import { useNotes } from '../context/NotesContext';
+import { useCourses } from '../context/CourseContext';
+import PageHeader from '../components/common/PageHeader';
 
 const NoteEditor: React.FC = () => {
   const { courseId, noteId } = useParams<{ courseId: string; noteId: string }>();
@@ -31,12 +31,23 @@ const NoteEditor: React.FC = () => {
   }, [courseId, courses]);
 
   useEffect(() => {
-    if (noteId && notes.length > 0) {
-      const note = notes.find(n => n.id === noteId);
+    console.log('Notes:', notes);
+  }, [notes]);
+
+  useEffect(() => {
+    if (noteId) {
+      if (notes.length === 0) {
+        // Wait for notes to load
+        return;
+      }
+
+      const note = notes.find(n => n.id === Number(noteId)); // Convert noteId to a number
       if (note) {
         setTitle(note.title);
         setContent(note.content);
       } else {
+        console.warn(`Note with ID ${noteId} not found.`);
+        // Only navigate after confirming data is loaded
         navigate(`/course/${courseId}`);
       }
     }
@@ -98,6 +109,14 @@ const NoteEditor: React.FC = () => {
       ['link', 'code-block'],
       ['clean'],
     ],
+    clipboard: {
+      matchVisual: false,
+    },
+    history: {
+      delay: 2000,
+      maxStack: 500,
+      userOnly: true,
+    },
   };
 
   return (

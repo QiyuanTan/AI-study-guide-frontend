@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { getCourses, createCourse, updateCourse, deleteCourse } from '../services/api.ts';
-import { Course } from '../types/course.ts';
+import { getCourses, createCourse, updateCourse, deleteCourse } from '../services/api';
+import { Course } from '../types/course';
 
 interface CourseContextType {
   courses: Course[];

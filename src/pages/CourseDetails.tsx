@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Download, FileText, Trash2, User } from 'lucide-react';
-import { useCourses } from '../context/CourseContext.tsx';
-import { useNotes } from '../context/NotesContext.tsx';
-import PageHeader from '../components/common/PageHeader.tsx';
-import NoteItem from '../components/notes/NoteItem.tsx';
-import CreateNoteButton from '../components/notes/CreateNoteButton.tsx';
-import { Course } from '../types/course.ts';
-import { Note } from '../types/note.ts';
+import { Download, FileText, User } from 'lucide-react';
+import { useCourses } from '../context/CourseContext';
+import { useNotes } from '../context/NotesContext';
+import PageHeader from '../components/common/PageHeader';
+import NoteItem from '../components/notes/NoteItem';
+import CreateNoteButton from '../components/notes/CreateNoteButton';
+import { Course } from '../types/course';
+import { Note } from '../types/note';
 
 const CourseDetails: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();
@@ -19,7 +19,7 @@ const CourseDetails: React.FC = () => {
 
   useEffect(() => {
     if (courseId && courses.length > 0) {
-      const foundCourse = courses.find(c => c.id === courseId);
+      const foundCourse = courses.find(c => c.id.toString() === courseId.toString());
       if (foundCourse) {
         setCourse(foundCourse);
       }
@@ -28,7 +28,7 @@ const CourseDetails: React.FC = () => {
 
   useEffect(() => {
     if (courseId && notes.length > 0) {
-      const filteredNotes = notes.filter(note => note.course === courseId);
+      const filteredNotes = notes.filter(note => note.course.toString() === courseId.toString());
       setCourseNotes(filteredNotes);
     } else {
       setCourseNotes([]);

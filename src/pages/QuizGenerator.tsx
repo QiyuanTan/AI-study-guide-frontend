@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { AlertCircle, Book, CheckCircle, FileQuestion, Upload } from 'lucide-react';
-import { useCourses } from '../context/CourseContext.tsx';
-import { useQuiz } from '../context/QuizContext.tsx';
-import PageHeader from '../components/common/PageHeader.tsx';
+import { useCourses } from '../context/CourseContext';
+import { useQuiz } from '../context/QuizContext';
+import PageHeader from '../components/common/PageHeader';
 
 const QuizGenerator: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();

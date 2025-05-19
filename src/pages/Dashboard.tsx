@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lightbulb, BookText } from 'lucide-react';
-import { useCourses } from '../context/CourseContext.tsx';
-import { useNotes } from '../context/NotesContext.tsx';
-import PageHeader from '../components/common/PageHeader.tsx';
-import CreateCourseModal from '../components/courses/CreateCourseModal.tsx';
-import { Note } from '../types/note.ts';
+import { useCourses } from '../context/CourseContext';
+import { useNotes } from '../context/NotesContext';
+import PageHeader from '../components/common/PageHeader';
+import CreateCourseModal from '../components/courses/CreateCourseModal';
+import { Note } from '../types/note';
 
 const Dashboard: React.FC = () => {
   const { courses, loading: loadingCourses } = useCourses();

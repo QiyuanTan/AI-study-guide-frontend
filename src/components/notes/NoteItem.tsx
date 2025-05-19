@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Edit, Trash2 } from 'lucide-react';
-import { Note } from '../../types/note.ts';
+import { Note } from '../../types/note';
 
 interface NoteItemProps {
   note: Note;
-  courseId: string;
+  courseId: string | undefined;
   onDelete: () => void;
 }
 
@@ -50,11 +50,11 @@ const NoteItem: React.FC<NoteItemProps> = ({ note, courseId, onDelete }) => {
           </button>
         </div>
       </div>
-      
+
       <p className="text-sm text-gray-600 line-clamp-3 mb-3">
         {getContentPreview(note.content)}
       </p>
-      
+
       {note.updated_at && (
         <div className="flex items-center text-xs text-gray-500">
           <Clock size={12} className="mr-1" />

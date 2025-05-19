@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { AlertCircle, CheckCircle, ChevronLeft, ChevronRight, Clock, Save } from 'lucide-react';
-import { useCourses } from '../context/CourseContext.tsx';
-import { useQuiz } from '../context/QuizContext.tsx';
-import PageHeader from '../components/common/PageHeader.tsx';
-import QuizQuestion from '../components/quiz/QuizQuestion.tsx';
+import { useCourses } from '../context/CourseContext';
+import { useQuiz } from '../context/QuizContext';
+import PageHeader from '../components/common/PageHeader';
+import QuizQuestion from '../components/quiz/QuizQuestion';
 
 const QuizTaking: React.FC = () => {
   const { courseId } = useParams<{ courseId: string }>();

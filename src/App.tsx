@@ -1,15 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './components/layout/Layout.tsx';
-import Dashboard from './pages/Dashboard.tsx';
-import CourseDetails from './pages/CourseDetails.tsx';
-import NoteEditor from './pages/NoteEditor.tsx';
-import QuizGenerator from './pages/QuizGenerator.tsx';
-import QuizTaking from './pages/QuizTaking.tsx';
-import QuizResults from './pages/QuizResults.tsx';
-import CourseProvider from './context/CourseContext.tsx';
-import NotesProvider from './context/NotesContext.tsx';
-import QuizProvider from './context/QuizContext.tsx';
+import Layout from './components/layout/Layout';
+import Dashboard from './pages/Dashboard';
+import CourseDetails from './pages/CourseDetails';
+import NoteEditor from './pages/NoteEditor';
+import QuizGenerator from './pages/QuizGenerator';
+import QuizTaking from './pages/QuizTaking';
+import QuizResults from './pages/QuizResults';
+import CourseProvider from './context/CourseContext';
+import NotesProvider from './context/NotesContext';
+import QuizProvider from './context/QuizContext';
 
 function App() {
   return (
