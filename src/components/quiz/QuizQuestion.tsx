@@ -60,7 +60,12 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({
         <div>
           <h3 className="text-lg font-medium text-gray-800">{question.title}</h3>
           {question.content && (
-            <p className="text-sm text-gray-600 mt-1">{question.content}</p>
+              <p
+                  className="text-sm text-gray-600 mt-1"
+                  dangerouslySetInnerHTML={{
+                    __html: question.content.replace(/\n/g, '<br />'),
+                  }}
+              />
           )}
         </div>
       </div>
