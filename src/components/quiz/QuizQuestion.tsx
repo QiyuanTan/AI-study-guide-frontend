@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Question } from '../../types/quiz';
 
 interface QuizQuestionProps {
@@ -20,6 +20,17 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({
   isCorrect,
   correctOption,
 }) => {
+
+  useEffect(() => {
+    if (
+        question.question_type === 'code' &&
+        question.starter_code &&
+        !selectedAnswer
+    ) {
+      onAnswerSelect(question.starter_code);
+    }
+  }, [question, onAnswerSelect, selectedAnswer]);
+
   const getOptionClassName = (option: string) => {
     if (!showResult) {
       return `border ${
@@ -48,24 +59,11 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({
         </div>
         <div>
           <h3 className="text-lg font-medium text-gray-800">{question.title}</h3>
-          {question.context && (
-            <p className="text-sm text-gray-600 mt-1">{question.context}</p>
+          {question.content && (
+            <p className="text-sm text-gray-600 mt-1">{question.content}</p>
           )}
         </div>
       </div>
-
-      {question.topics.length > 0 && (
-        <div className="mb-3 flex flex-wrap gap-1">
-          {question.topics.map((topic, i) => (
-            <span
-              key={i}
-              className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
-            >
-              {topic}
-            </span>
-          ))}
-        </div>
-      )}
 
       {question.question_type === 'mcq' ? (
         <div className="mt-4">
@@ -76,9 +74,6 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({
               onClick={() => !showResult && onAnswerSelect(option)}
             >
               <div className="flex items-start">
-                <div className="flex-shrink-0 w-6">
-                  <span className="font-medium">{String.fromCharCode(65 + optionIndex)}.</span>
-                </div>
                 <div className="ml-2">{option}</div>
               </div>
             </div>

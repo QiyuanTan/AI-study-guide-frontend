@@ -14,7 +14,7 @@ const QuizResults: React.FC = () => {
   
   const [courseName, setCourseName] = useState('');
   const [score, setScore] = useState({ correct: 0, total: 0, percentage: 0 });
-  const [topicScores, setTopicScores] = useState<Record<string, { correct: number; total: number }>>({});
+  // const [topicScores, setTopicScores] = useState<Record<string, { correct: number; total: number }>>({});
 
   useEffect(() => {
     if (courseId && courses.length > 0) {
@@ -40,23 +40,23 @@ const QuizResults: React.FC = () => {
     });
 
     // Calculate topic scores
-    const topicsMap: Record<string, { correct: number; total: number }> = {};
-    
-    questions.forEach((question, index) => {
-      question.topics.forEach(topic => {
-        if (!topicsMap[topic]) {
-          topicsMap[topic] = { correct: 0, total: 0 };
-        }
-        
-        topicsMap[topic].total += 1;
-        
-        if (results[index]?.correct) {
-          topicsMap[topic].correct += 1;
-        }
-      });
-    });
-    
-    setTopicScores(topicsMap);
+    // const topicsMap: Record<string, { correct: number; total: number }> = {};
+    //
+    // questions.forEach((question, index) => {
+    //   question.topics.forEach(topic => {
+    //     if (!topicsMap[topic]) {
+    //       topicsMap[topic] = { correct: 0, total: 0 };
+    //     }
+    //
+    //     topicsMap[topic].total += 1;
+    //
+    //     if (results[index]?.correct) {
+    //       topicsMap[topic].correct += 1;
+    //     }
+    //   });
+    // });
+    //
+    // setTopicScores(topicsMap);
   }, [results, questions, courseId, navigate]);
 
   const handleTakeNewQuiz = () => {
@@ -144,33 +144,33 @@ const QuizResults: React.FC = () => {
           </div>
         </div>
         
-        <h3 className="text-lg font-medium text-gray-800 mb-3">Performance by Topic</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Object.entries(topicScores).map(([topic, stats]) => {
-            const percentage = Math.round((stats.correct / stats.total) * 100);
-            return (
-              <div key={topic} className="bg-gray-50 rounded-md p-3">
-                <div className="flex justify-between items-center mb-1">
-                  <h4 className="font-medium text-gray-800">{topic}</h4>
-                  <span className={getGradeColor(percentage)}>
-                    {percentage}%
-                  </span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div
-                    className={`h-2 rounded-full ${
-                      percentage >= 70 ? 'bg-green-500' : 'bg-red-500'
-                    }`}
-                    style={{ width: `${percentage}%` }}
-                  ></div>
-                </div>
-                <div className="text-xs text-gray-500 mt-1">
-                  {stats.correct} / {stats.total} correct
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {/*<h3 className="text-lg font-medium text-gray-800 mb-3">Performance by Topic</h3>*/}
+        {/*<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">*/}
+        {/*  {Object.entries(topicScores).map(([topic, stats]) => {*/}
+        {/*    const percentage = Math.round((stats.correct / stats.total) * 100);*/}
+        {/*    return (*/}
+        {/*      <div key={topic} className="bg-gray-50 rounded-md p-3">*/}
+        {/*        <div className="flex justify-between items-center mb-1">*/}
+        {/*          <h4 className="font-medium text-gray-800">{topic}</h4>*/}
+        {/*          <span className={getGradeColor(percentage)}>*/}
+        {/*            {percentage}%*/}
+        {/*          </span>*/}
+        {/*        </div>*/}
+        {/*        <div className="w-full bg-gray-200 rounded-full h-2">*/}
+        {/*          <div*/}
+        {/*            className={`h-2 rounded-full ${*/}
+        {/*              percentage >= 70 ? 'bg-green-500' : 'bg-red-500'*/}
+        {/*            }`}*/}
+        {/*            style={{ width: `${percentage}%` }}*/}
+        {/*          ></div>*/}
+        {/*        </div>*/}
+        {/*        <div className="text-xs text-gray-500 mt-1">*/}
+        {/*          {stats.correct} / {stats.total} correct*/}
+        {/*        </div>*/}
+        {/*      </div>*/}
+        {/*    );*/}
+        {/*  })}*/}
+        {/*</div>*/}
       </div>
 
       {/* Detailed results */}

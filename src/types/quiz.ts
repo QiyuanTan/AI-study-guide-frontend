@@ -2,10 +2,11 @@ export type QuestionType = 'mcq' | 'code';
 
 export interface Question {
   title: string;
-  context: string;
-  topics: string[];
+  content: string;
+  // topics: string[];
   question_type: QuestionType;
   options: string[];
+  starter_code: string
 }
 
 export interface QuizResult {
